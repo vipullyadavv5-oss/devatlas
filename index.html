@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevAtlas — Chart Your Coding Journey</title>
+    <meta name="description" content="DevAtlas is a gamified explorer coding journey app for tracking LeetCode, DSA, and algorithm biomes." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN for instant browser preview -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Fredoka', 'system-ui', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              purple: {
+                50: '#faf5ff',
+                100: '#f3e8ff',
+                200: '#e9d5ff',
+                300: '#d8b4fe',
+                400: '#c084fc',
+                500: '#a855f7',
+                600: '#9333ea',
+                700: '#7e22ce',
+                800: '#6b21a8',
+                900: '#581c87',
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom Keyframe Animations & CSS -->
+    <style>
+      @keyframes ring-fill {
+        from { stroke-dashoffset: var(--dash-total); }
+        to   { stroke-dashoffset: var(--dash-empty); }
+      }
+
+      @keyframes bounce-in {
+        0%   { transform: scale(1); }
+        30%  { transform: scale(1.45); }
+        55%  { transform: scale(0.85); }
+        75%  { transform: scale(1.15); }
+        90%  { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+
+      @keyframes pin-drop {
+        0%   { transform: translateY(-18px) scale(0.7); opacity: 0; }
+        60%  { transform: translateY(4px) scale(1.1); opacity: 1; }
+        80%  { transform: translateY(-3px) scale(0.97); }
+        100% { transform: translateY(0) scale(1); opacity: 1; }
+      }
+
+      @keyframes float-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes star-fill {
+        0%   { transform: scale(0.6) rotate(-15deg); opacity: 0; }
+        50%  { transform: scale(1.3) rotate(5deg); opacity: 1; }
+        75%  { transform: scale(0.9) rotate(-2deg); }
+        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+        50%       { box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
+      }
+
+      @keyframes wander {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33%       { transform: translateY(-6px) rotate(2deg); }
+        66%       { transform: translateY(3px) rotate(-1.5deg); }
+      }
+
+      @keyframes terrain-appear {
+        from { opacity: 0; transform: scale(0.8); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+
+      * {
+        scrollbar-width: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+
+      html {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        background-color: #f0ede8;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0ede8;
+        color: #1f1235;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
