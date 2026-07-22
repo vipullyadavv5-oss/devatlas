@@ -5,3 +5,5 @@ mingit.zip
 dist
 dist-ssr
 *.local
+__pycache__
+*.db
