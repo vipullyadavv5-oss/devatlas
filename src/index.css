@@ -1,90 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Inter:wght@300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400..700&display=swap');
 
-@layer utilities {
-  .glass-card {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
+/* =========================================
+   CODOLIO-STYLE GLOBAL DESIGN SYSTEM
+   Clean white, orange accents, minimal
+   ========================================= */
 
-  .glass-card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .glass-card-hover:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(139, 92, 246, 0.3);
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 12px 30px -10px rgba(124, 58, 237, 0.25);
-  }
-
-  .glass-nav {
-    background: rgba(9, 9, 11, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .glow-purple {
-    box-shadow: 0 0 25px -5px rgba(124, 58, 237, 0.4);
-  }
-
-  .glow-cyan {
-    box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.4);
-  }
-
-  .glow-amber {
-    box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
-  }
-
-  .gradient-text-purple {
-    background: linear-gradient(135deg, #A855F7 0%, #EC4899 50%, #06B6D4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .gradient-text-amber {
-    background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Custom Keyframes */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(3deg); }
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #FFFFFF;
+  color: #111827;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-@keyframes shimmer {
+/* ---- Custom Scrollbar ---- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D1D5DB transparent;
+}
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+*::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 99px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* ---- Typography ---- */
+.font-space { font-family: 'Space Grotesk', sans-serif; }
+
+/* ---- Codolio Card ---- */
+.codo-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.codo-card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Orange Accent Button ---- */
+.btn-orange {
+  background: #FF7A00;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-orange:hover {
+  background: #E66E00;
+  transform: translateY(-1px);
+}
+.btn-orange:active { transform: translateY(0); }
+
+/* ---- Orange Link Text ---- */
+.text-orange { color: #FF7A00; }
+.text-orange-link {
+  color: #FF7A00;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.text-orange-link:hover { text-decoration: underline; }
+
+/* ---- Contribution Heatmap ---- */
+.heatmap-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ---- Stats Number ---- */
+.stat-number {
+  font-size: 40px;
+  font-weight: 800;
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1;
+  color: #111827;
+}
+
+/* ---- Section Heading ---- */
+.section-heading {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #111827;
+  line-height: 1.2;
+}
+
+/* ---- Separator line ---- */
+.section-divider {
+  border: none;
+  border-top: 1px solid #E5E7EB;
+  margin: 0;
+}
+
+/* ---- Hero owl arc animation ---- */
+@keyframes floatOwl {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.owl-float {
+  animation: floatOwl 4s ease-in-out infinite;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideInUp 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* ---- Rating chart bar ---- */
+.rating-bar {
+  height: 8px;
+  background: #FF7A00;
+  border-radius: 99px;
+  transition: width 1s ease;
+}
+
+/* ---- Loading skeleton ---- */
+.skeleton {
+  background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
+  background-size: 200% 100%;
+  animation: shimmerSkeleton 1.4s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmerSkeleton {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
-@keyframes path-glow {
-  0%, 100% { stroke: #7C3AED; filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.6)); }
-  50% { stroke: #06B6D4; filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.8)); }
+/* ---- Pill badge ---- */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+/* ---- Navbar sticky ---- */
+.codo-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E5E7EB;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
+/* ---- Topic bar ---- */
+.topic-bar-fill {
+  height: 10px;
+  border-radius: 99px;
+  background: #3B82F6;
+  transition: width 0.8s ease;
 }
 
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-.path-glowing {
-  animation: path-glow 3s ease-in-out infinite;
+/* ---- Donut chart segment ---- */
+.donut-segment {
+  transition: stroke-dasharray 0.8s ease;
 }

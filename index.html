@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevAtlas — Learn Tech. Build Cool Stuff. Become Unstoppable 🚀</title>
-    <meta name="description" content="Personalized roadmaps, AI guidance, coding challenges and real-world projects—all in one place." />
+    <title>DevAtlas — Your All-in-One Coding Portfolio</title>
+    <meta name="description" content="Track your GitHub contributions, LeetCode, Codeforces stats, contest ratings, and DSA questions all in one place." />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Inter:wght@300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,20 +21,17 @@
           extend: {
             fontFamily: {
               space: ['Space Grotesk', 'sans-serif'],
-              display: ['Fredoka', 'sans-serif'],
-              sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
             },
             colors: {
-              brand: {
-                primary: '#7C3AED',
-                purple: '#8B5CF6',
-                cyan: '#06B6D4',
-                accent: '#F59E0B',
-                success: '#22C55E',
-                danger: '#EF4444',
-                bg: '#09090B',
-                card: 'rgba(255, 255, 255, 0.06)',
-                border: 'rgba(255, 255, 255, 0.08)',
+              codolio: {
+                orange: '#FF7A00',
+                orangeHover: '#E66E00',
+                bg: '#FAFAFA',
+                card: '#FFFFFF',
+                border: '#E5E7EB',
+                text: '#111827',
+                subtext: '#6B7280',
               }
             }
           }
@@ -45,34 +42,28 @@
     <style>
       * {
         scrollbar-width: thin;
-        scrollbar-color: rgba(124, 58, 237, 0.3) transparent;
+        scrollbar-color: #CBD5E1 transparent;
       }
       *::-webkit-scrollbar {
         width: 6px;
         height: 6px;
       }
-      *::-webkit-scrollbar-track {
-        background: transparent;
-      }
       *::-webkit-scrollbar-thumb {
-        background: rgba(124, 58, 237, 0.3);
+        background: #CBD5E1;
         border-radius: 9999px;
       }
-      *::-webkit-scrollbar-thumb:hover {
-        background: rgba(124, 58, 237, 0.6);
-      }
 
-      html, body {
+      body {
         margin: 0;
         padding: 0;
-        background-color: #09090B;
-        color: #F4F4F5;
+        background-color: #F8FAFC;
+        color: #111827;
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
         overflow-x: hidden;
       }
     </style>
   </head>
-  <body class="bg-[#09090B] text-zinc-100 antialiased selection:bg-purple-500/30 selection:text-purple-200">
+  <body class="bg-slate-50 text-slate-900 antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

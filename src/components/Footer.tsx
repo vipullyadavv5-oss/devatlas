@@ -1,51 +1,114 @@
 import React from 'react'
-import { Github, Twitter, Disc as Discord, Heart, Coffee } from 'lucide-react'
-import { CodingCatDoodle } from './Doodles'
+import { Github, ExternalLink } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 bg-zinc-950/80 backdrop-blur-md py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+    <footer
+      style={{
+        borderTop: '1px solid #E5E7EB',
+        background: '#FAFAFA',
+        padding: '40px 24px 32px',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '20px',
+        }}
+      >
         {/* Brand */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-center md:justify-start gap-2">
-            <span className="text-xl">🚀</span>
-            <span className="text-lg font-bold font-space gradient-text-purple">DevAtlas</span>
-          </div>
-          <p className="text-xs text-zinc-400 font-sans max-w-sm">
-            Unified developer platform combining real GitHub, LeetCode & Codeforces statistics into a transparent DevScore.
-          </p>
-          <div className="text-xs text-zinc-500 font-medium flex items-center justify-center md:justify-start gap-1.5 pt-1">
-            <span>Built with</span>
-            <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" />
-            <span>FastAPI, React & Tailwind CSS</span>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '22px' }}>🦉</span>
+          <span
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 800,
+              fontSize: '18px',
+              color: '#111827',
+            }}
+          >
+            DevAtlas
+          </span>
+          <span style={{ fontSize: '12px', color: '#9CA3AF', fontWeight: 500 }}>
+            — Your Verified Developer Profile
+          </span>
         </div>
 
-        {/* Banner */}
-        <div className="p-4 rounded-2xl bg-purple-500/5 border border-purple-500/10 text-xs font-semibold text-purple-300 flex items-center gap-3">
-          <CodingCatDoodle size={32} />
-          <div>
-            <div className="text-zinc-100 font-bold font-space">DevAtlas Platform</div>
-            <div className="text-zinc-400 text-[11px]">Verified Developer Credentials</div>
-          </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="space-y-3">
-          <div className="text-xs font-bold font-space text-zinc-300 uppercase tracking-widest">Connect</div>
-          <div className="flex items-center justify-center md:justify-end gap-3">
+        {/* Links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+          {['About', 'Privacy', 'Terms', 'Contact'].map((link) => (
             <a
-              href="https://github.com/vipullyadavv5-oss/devatlas"
-              target="_blank"
-              rel="noreferrer"
-              className="p-2.5 rounded-xl bg-zinc-900 border border-white/10 text-zinc-400 hover:text-white hover:border-purple-500/40 transition-all"
-              title="GitHub Repository"
+              key={link}
+              href="#"
+              style={{
+                fontSize: '13px',
+                color: '#6B7280',
+                textDecoration: 'none',
+                fontWeight: 500,
+                transition: 'color 0.15s',
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#FF7A00')}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = '#6B7280')}
             >
-              <Github className="w-4 h-4" />
+              {link}
             </a>
-          </div>
+          ))}
+          <a
+            href="https://github.com/vipullyadavv5-oss/devatlas"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              fontSize: '13px',
+              color: '#374151',
+              textDecoration: 'none',
+              fontWeight: 600,
+              padding: '6px 12px',
+              border: '1px solid #E5E7EB',
+              borderRadius: '8px',
+              transition: 'border-color 0.15s, color 0.15s',
+            }}
+            onMouseEnter={(e) => {
+              ;(e.currentTarget as HTMLElement).style.borderColor = '#111827'
+              ;(e.currentTarget as HTMLElement).style.color = '#111827'
+            }}
+            onMouseLeave={(e) => {
+              ;(e.currentTarget as HTMLElement).style.borderColor = '#E5E7EB'
+              ;(e.currentTarget as HTMLElement).style.color = '#374151'
+            }}
+          >
+            <Github size={14} />
+            GitHub
+            <ExternalLink size={12} />
+          </a>
         </div>
+      </div>
+
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '20px auto 0',
+          paddingTop: '20px',
+          borderTop: '1px solid #E5E7EB',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
+        }}
+      >
+        <p style={{ fontSize: '12px', color: '#9CA3AF' }}>
+          © 2024 DevAtlas. Aggregates public data from GitHub, LeetCode &amp; Codeforces APIs.
+        </p>
+        <p style={{ fontSize: '12px', color: '#9CA3AF' }}>
+          Built with ❤️ using FastAPI + React + Vite
+        </p>
       </div>
     </footer>
   )
