@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Sparkles, Send, Bot, User, Code, FileText, HelpCircle, Terminal, RefreshCw, X, MessageSquare } from 'lucide-react'
+import { Sparkles, Send, Bot, User, RefreshCw, X } from 'lucide-react'
 import { BrainDoodle } from './Doodles'
+import { sendAiChat } from '../services/api'
 
 interface Message {
   id: string
@@ -13,14 +14,15 @@ interface AiAssistantModalProps {
   isOpen: boolean
   onClose: () => void
   initialPrompt?: string
+  userContext?: any
 }
 
-export function AiAssistantModal({ isOpen, onClose, initialPrompt }: AiAssistantModalProps) {
+export function AiAssistantModal({ isOpen, onClose, initialPrompt, userContext }: AiAssistantModalProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       sender: 'ai',
-      text: "Yo! 👋 I'm your DevAtlas AI coding co-pilot. Ask me to debug code, explain complex DSA concepts, or build a custom learning roadmap!",
+      text: "Yo! 👋 I'm your DevAtlas AI coding co-pilot. Ask me to debug code, explain DSA concepts, or build custom learning roadmaps!",
       timestamp: 'Just now'
     }
   ])
@@ -37,9 +39,9 @@ export function AiAssistantModal({ isOpen, onClose, initialPrompt }: AiAssistant
     { label: '📄 Resume Tech Tips', query: 'How should I describe my DevAtlas full-stack project on my resume to stand out?' }
   ]
 
-  const handleSend = (textToSend?: string) => {
+  const handleSend = async (textToSend?: string) => {
     const query = textToSend || inputQuery
-    if (!query.trim()) return
+    if (!query.trim() || isTyping) return
 
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -52,28 +54,31 @@ export function AiAssistantModal({ isOpen, onClose, initialPrompt }: AiAssistant
     setInputQuery('')
     setIsTyping(true)
 
-    // Simulate AI response stream
-    setTimeout(() => {
-      let aiReply = "Boom! Here is what you need to know:\n\n"
-      if (query.toLowerCase().includes('react')) {
-        aiReply += "React 18 introduces Concurrent Rendering. Hooks like `useTransition` mark state updates as non-blocking, so your UI stays fluid even during expensive renders! 🚀"
-      } else if (query.toLowerCase().includes('roadmap')) {
-        aiReply += "Here is your 3-Step Action Plan:\n1. Master TypeScript & Async Patterns\n2. Build a REST/GraphQL API in Node.js\n3. Deploy with Docker & Vercel!"
-      } else {
-        aiReply += "Great question! When building scalable apps, always focus on clean modular architecture, error boundaries, and defensive type-checking. Touch grass after this session! 🌿"
-      }
-
+    try {
+      // Real API call to FastAPI /api/ai/chat endpoint powered by Gemini API
+      const replyText = await sendAiChat(query, userContext)
       setMessages((prev) => [
         ...prev,
         {
           id: (Date.now() + 1).toString(),
           sender: 'ai',
-          text: aiReply,
+          text: replyText,
           timestamp: 'Just now'
         }
       ])
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          sender: 'ai',
+          text: "Oops! Our AI server experienced a temporary hiccup. Make sure the FastAPI backend is running! 🚀",
+          timestamp: 'Just now'
+        }
+      ])
+    } finally {
       setIsTyping(false)
-    }, 1200)
+    }
   }
 
   return (
@@ -89,7 +94,7 @@ export function AiAssistantModal({ isOpen, onClose, initialPrompt }: AiAssistant
               <h3 className="text-lg font-bold font-space text-zinc-100 flex items-center gap-2">
                 DevAtlas AI Assistant <BrainDoodle size={20} />
               </h3>
-              <p className="text-xs text-cyan-300 font-medium">Powered by Gemini 3.6 Flash</p>
+              <p className="text-xs text-cyan-300 font-medium">Real Gemini API Integration</p>
             </div>
           </div>
 
@@ -146,7 +151,7 @@ export function AiAssistantModal({ isOpen, onClose, initialPrompt }: AiAssistant
           {isTyping && (
             <div className="flex items-center gap-2 text-xs text-purple-400 p-2">
               <RefreshCw className="w-4 h-4 animate-spin" />
-              <span>DevAtlas AI is thinking...</span>
+              <span>DevAtlas AI is processing real API insights...</span>
             </div>
           )}
         </div>
