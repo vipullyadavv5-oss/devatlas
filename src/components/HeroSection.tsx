@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Search, Github, Shield, Sparkles, Code2, Terminal, ExternalLink } from 'lucide-react'
-import { RocketDoodle, SparklesDoodle } from './Doodles'
+import { Search, Github, Sparkles } from 'lucide-react'
+import { SparklesDoodle } from './Doodles'
+import { TechBackgroundIllustration } from './TechBackground'
 
 interface HeroSectionProps {
   onSearchUser: (username: string) => void
@@ -18,9 +19,9 @@ export function HeroSection({ onSearchUser, onGitHubLogin }: HeroSectionProps) {
   }
 
   return (
-    <section className="relative overflow-hidden py-12 md:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-8">
-      {/* Glow Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[280px] bg-gradient-to-r from-purple-600/20 via-pink-600/10 to-cyan-500/20 blur-[100px] rounded-full pointer-events-none -z-10" />
+    <section className="relative overflow-hidden py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-8">
+      {/* Background Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-gradient-to-r from-purple-600/20 via-pink-600/10 to-cyan-500/20 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       {/* Hero Badge */}
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold backdrop-blur-md">
@@ -41,8 +42,8 @@ export function HeroSection({ onSearchUser, onGitHubLogin }: HeroSectionProps) {
         DevAtlas aggregates your live commits, LeetCode problem difficulty, and Codeforces competitive ratings into one unified, verifiable developer card.
       </p>
 
-      {/* Username Search & OAuth Actions */}
-      <div className="max-w-md mx-auto pt-2">
+      {/* Search Input Bar */}
+      <div className="max-w-md mx-auto relative z-10">
         <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 p-2 rounded-2xl bg-zinc-900/90 border border-white/10 shadow-2xl focus-within:border-purple-500/50 transition-all">
           <Search className="w-5 h-5 text-purple-400 ml-2 shrink-0" />
           <input
@@ -60,7 +61,7 @@ export function HeroSection({ onSearchUser, onGitHubLogin }: HeroSectionProps) {
           </button>
         </form>
 
-        <div className="flex items-center justify-center gap-4 text-xs text-zinc-400 pt-4">
+        <div className="flex items-center justify-center gap-4 text-xs text-zinc-400 pt-3">
           <span>Or verify your own data:</span>
           <button
             onClick={onGitHubLogin}
@@ -70,6 +71,9 @@ export function HeroSection({ onSearchUser, onGitHubLogin }: HeroSectionProps) {
           </button>
         </div>
       </div>
+
+      {/* Landing Page Tech Illustration Background Graphic */}
+      <TechBackgroundIllustration />
     </section>
   )
 }
